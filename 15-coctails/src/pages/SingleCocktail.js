@@ -46,7 +46,6 @@ const SingleCocktail = () => {
             ingredients,
           };
           setCocktail(newCocktail);
-          console.log(newCocktail);
         } else {
           setCocktail(null);
         }
