@@ -9,8 +9,13 @@ function App() {
 
   useEffect(() => {
     if (loading) return;
-    setFollowers(data[0]);
-  }, [loading]);
+    setFollowers(data[page]);
+  }, [loading, page]);
+
+  const handlePage = (index) => {
+    setPage(index);
+    console.log(index);
+  };
 
   return (
     <main>
@@ -18,13 +23,28 @@ function App() {
         <h1>{loading ? "Loading..." : "pagination"}</h1>
         <div className="underline"></div>
       </div>
-      <div className="followers">
+      <section className="followers">
         <div className="container">
           {followers.map((follower) => {
             return <Follower key={follower.id} {...follower} />;
           })}
         </div>
-      </div>
+        {!loading && (
+          <div className="btn-container">
+            {data.map((item, index) => {
+              return (
+                <button
+                  key={index}
+                  className={`page-btn ${index === page ? "active-btn" : null}`}
+                  onClick={() => handlePage(index)}
+                >
+                  {index + 1}
+                </button>
+              );
+            })}
+          </div>
+        )}
+      </section>
     </main>
   );
 }
