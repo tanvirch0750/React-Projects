@@ -13,7 +13,7 @@ const Movies = () => {
   return (
     <section className="movies">
       {movies.map((movie) => {
-        const { imdbId: id, Poster: poster, Title: title, Year: year } = movie;
+        const { imdbID: id, Poster: poster, Title: title, Year: year } = movie;
 
         return (
           <Link to={`/movies/${id}`} key={id} className="movie">
