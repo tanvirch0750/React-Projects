@@ -10,6 +10,7 @@ const Movies = () => {
   if (isLoading) {
     return <div className="loading"></div>;
   }
+
   return (
     <section className="movies">
       {movies.map((movie) => {
