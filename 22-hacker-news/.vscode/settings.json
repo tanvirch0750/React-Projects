@@ -2,10 +2,13 @@
   "editor.tokenColorCustomizations": {
     "[Default Dark+]": {
       "functions": "#1ED760",
-      "keywords": "#0af7d3",
+      "keywords": "#f92672",
+      //"keywords": "#ff00aa",
       "strings": "#FFD866",
+      //"strings": "#0af7d3",
       "comments": "#5f5f5f",
       "numbers": "#c74ded",
+      "variables": "#0af7d3",
 
       "textMateRules": [
         {
@@ -15,29 +18,24 @@
           }
         },
         {
-          "scope": "keyword.operator",
+          "scope": [
+            "keyword.operator",
+            "keyword.control",
+            "keyword.operator.new",
+            "keyword.operator.logical",
+            "keyword.other"
+          ],
           "settings": {
             "foreground": "#f92672"
-          }
-        },
-        {
-          "scope": "keyword.control",
-          "settings": {
-            "foreground": "#f92672"
+            //"foreground": "#ff00aa"
           }
         },
 
         {
-          "scope": "keyword.operator.new",
-          "settings": {
-            "foreground": "#f92672"
-          }
-        },
-        {
           "scope": "entity.name.tag",
           "settings": {
-            "foreground": "#1c99e6"
-            //"foreground": "#1c99e6b4"
+            //"foreground": "#1c99e6"
+            "foreground": "#1c99e6b4"
           }
         },
 
@@ -53,8 +51,8 @@
           "scope": "entity.other.attribute-name",
           "settings": {
             //"foreground": "#e74c3c",
-            //"foreground": "#00e8c6"
-            "foreground": "#0af7d3"
+            "foreground": "#96E072"
+            //"foreground": "#0af7d3"
           }
         }
       ]

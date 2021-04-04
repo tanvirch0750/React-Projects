@@ -10,10 +10,15 @@ import {
 
 import reducer from "./reducer";
 
-const API_ENDPOINT = "https://hn.algolia.com/api/v1/search?";
+const API_ENDPOINT =
+  "https://cors-anywhere.herokuapp.com/https://hn.algolia.com/api/v1/search?";
 
 const initialState = {
   isLoading: true,
+  hits: [],
+  query: "react",
+  pages: 0,
+  nbPages: 0,
 };
 
 const AppContext = React.createContext();
@@ -25,10 +30,22 @@ const AppProvider = ({ children }) => {
   // FETCH STORIES DATA
   const fetchStories = async (url) => {
     dispatch({ type: SET_LOADING });
+
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      dispatch({
+        type: SET_STORIES,
+        payload: { hits: data.hits, nbPages: data.nbPages },
+      });
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
-    fetchStories();
+    fetchStories(`${API_ENDPOINT}query=${state.query}&page=${state.pages}`);
   }, []);
 
   return (
