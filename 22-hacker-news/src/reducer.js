@@ -28,6 +28,22 @@ const reducer = (state, action) => {
         query: action.payload,
         pages: 0,
       };
+    case HANDLE_PAGE:
+      if (action.payload === "inc") {
+        let nextPage = state.pages + 1;
+        if (nextPage > state.nbPages - 1) {
+          nextPage = 0;
+        }
+        return { ...state, pages: nextPage };
+      }
+      if (action.payload === "dec") {
+        let prevPage = state.pages - 1;
+        if (prevPage < 0) {
+          prevPage = state.nbPages - 1;
+        }
+        return { ...state, pages: prevPage };
+      }
+
     default:
       throw new Error(`no matching "${action.type}"`);
   }
