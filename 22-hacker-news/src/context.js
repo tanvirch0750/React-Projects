@@ -38,10 +38,14 @@ const AppProvider = ({ children }) => {
         type: SET_STORIES,
         payload: { hits: data.hits, nbPages: data.nbPages },
       });
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
+  };
+
+  // remove stories
+  const removeStory = (id) => {
+    dispatch({ type: REMOVE_STORY, payload: id });
   };
 
   useEffect(() => {
@@ -49,7 +53,9 @@ const AppProvider = ({ children }) => {
   }, []);
 
   return (
-    <AppContext.Provider value={{ ...state }}>{children}</AppContext.Provider>
+    <AppContext.Provider value={{ ...state, removeStory }}>
+      {children}
+    </AppContext.Provider>
   );
 };
 // make sure use
