@@ -97,7 +97,11 @@ const AppProvider = ({ children }) => {
     setIsModalOpen(false);
   };
 
-  const handleChange = (e) => {};
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setQuiz({ ...quiz, [name]: value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
