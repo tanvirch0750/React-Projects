@@ -57,7 +57,6 @@ const AppProvider = ({ children }) => {
         setWaiting(true);
         setError(true);
       }
-      console.log(data);
     } else {
       setWaiting(true);
     }
@@ -105,6 +104,14 @@ const AppProvider = ({ children }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const { amount, category, difficulty } = quiz;
+
+    // const tempUrl =
+    //   "https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&type=multiple";
+
+    const url = `${API_ENDPOINT}amount=${amount}&category=${table[category]}&difficulty=${difficulty}&type=multiple`;
+
+    fetchQuestions(url);
   };
 
   return (

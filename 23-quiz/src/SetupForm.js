@@ -19,7 +19,7 @@ const SetupForm = () => {
               id="amount"
               value={quiz.amount}
               className="form-input"
-              onchange={handleChange}
+              onChange={handleChange}
               min={1}
               max={50}
             />
@@ -32,7 +32,7 @@ const SetupForm = () => {
               id="category"
               className="form-input"
               value={quiz.category}
-              onchange={handleChange}
+              onChange={handleChange}
             >
               <option value="sports">sports</option>
               <option value="history">history</option>
@@ -47,7 +47,7 @@ const SetupForm = () => {
               id="difficulty"
               className="form-input"
               value={quiz.difficulty}
-              onchange={handleChange}
+              onChange={handleChange}
             >
               <option value="easy">easy</option>
               <option value="medium">medium</option>
