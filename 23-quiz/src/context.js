@@ -32,6 +32,35 @@ const AppProvider = ({ children }) => {
   // modal error
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // fetch questions
+  const fetchQuestions = async (url) => {
+    setLoading(true);
+    setWaiting(false);
+
+    const response = await axios(url).catch((err) => console.log(err));
+
+    if (response) {
+      const data = response.data.results;
+      if (data.length > 0) {
+        setQuestions(data);
+        setLoading(false);
+        setWaiting(false);
+        setError(false);
+      } else {
+        setWaiting(true);
+        setError(true);
+      }
+      console.log(data);
+    } else {
+      setWaiting(true);
+    }
+  };
+
+  // use-effect for development purpose later will refactor it
+  useEffect(() => {
+    fetchQuestions(tempUrl);
+  }, []);
+
   return (
     <AppContext.Provider
       value={{
