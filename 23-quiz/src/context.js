@@ -61,7 +61,7 @@ const AppProvider = ({ children }) => {
     setIndex((oldIndex) => {
       const index = oldIndex + 1;
       if (index > questions.length - 1) {
-        // openModal()
+        openModal();
         return 0;
       } else {
         return index;
@@ -77,6 +77,17 @@ const AppProvider = ({ children }) => {
       });
     }
     nextQuestions();
+  };
+
+  // open Modal
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+  // close Modal
+  const closeModal = () => {
+    setWaiting(true);
+    setCorrect(0);
+    setIsModalOpen(false);
   };
 
   // use-effect for development purpose later will refactor it
@@ -96,6 +107,7 @@ const AppProvider = ({ children }) => {
         isModalOpen,
         nextQuestions,
         checkAnswers,
+        closeModal,
       }}
     >
       {children}
